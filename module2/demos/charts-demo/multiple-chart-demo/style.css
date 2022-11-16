@@ -1,0 +1,9 @@
+#container {
+  height: 80vh;
+  display: flex;
+}
+
+.chart {
+  flex-basis: 100%;
+  flex: 1;
+}
