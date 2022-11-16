@@ -1,0 +1,1 @@
+let words = [5, true, 'am', false, 'I', "hungry", 10];
