@@ -1,1 +1,1 @@
-# modern-frontend-pau
+# Modern Frontend Pau
