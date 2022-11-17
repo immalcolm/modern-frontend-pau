@@ -3,7 +3,7 @@ const DATA_URL =
 //setup options
 const options = {
   chart: {
-    type: "scatter",//cos line doesnt make any sense
+    type: "scatter", //cos line doesnt make any sense
     height: "100%",
   },
   series: [],
@@ -23,7 +23,6 @@ async function loadData() {
 window.addEventListener("DOMContentLoaded", async function () {
   let series = await loadData();
   chart.updateSeries([{ name: "Temp", data: series.temperatures }]);
-
 });
 
 const divChart = document.querySelector("#chart");
