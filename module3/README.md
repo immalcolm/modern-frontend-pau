@@ -21,15 +21,21 @@ npm install <package-name>
 #install a package from yarn repository
 yarn add <package-name>
 
+#uninstall a package
+npm un <package-name>
+
+#update package
+npm update <package-name>
+
 #node is typed in the console to access REPL
 $ node
 
 #the > indicates that REPL is running
 # anything written after > will be evaluated 
-> console.log("HI")
+> console.log("Hey There")
 
-// REPL has evaluated the line and has printed out HI
-HI
+# REPL has evaluated the line and has printed out HI
+Hey there
 
 ```
 
@@ -39,5 +45,9 @@ Command Line Basics
 pwd
 ```
 
+```javascript
+const fs = require('fs');
 
+const config = require('/path/to/file');
+```
 

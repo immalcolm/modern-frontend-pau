@@ -36,6 +36,14 @@ app.get('/hello/:id',function(req, res){
     res.send("Hi! " + name);
 });
 
+//multi param routing
+app.get('/hello/:firstname/:lastname',function(req,res){
+    let firstName = req.params.firstname;
+    let lastName = req.params.lastname;
+
+    res.send("Hi!" + firstName + ", " + lastName);
+})
+
 
 
 //our listener must be placed last 
