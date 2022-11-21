@@ -1,0 +1,14 @@
+{{#extends "base"}}
+
+    <!-- own content code -->
+    {{#block "content"}} 
+        Hello There!! 
+        <ol>
+        {{#each students}}
+            <li>{{this}}</li>
+        {{else}}
+            No students! 
+        {{/each}}
+        </ol>
+    {{/block}}
+{{/extends}}
