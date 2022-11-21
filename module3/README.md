@@ -3,7 +3,15 @@ Covering several topics on NodeJS and Express
 
 Using handlebars as the templating engine with Express
 
-
+## Common Issues Faced
+- not installing proper package or requiring a non-installed package
+- typing in the wrong package name
+- not creating a layout folder
+- not creating `views` folder
+- syntax issues 
+- missing out `block` names
+- (Folder/File Mismatch) accidently putting the `hbs` folder in `public` instead of `views` folder
+  
 ## Node Basics
 ```properties
 #run a node file
@@ -50,4 +58,5 @@ const fs = require('fs');
 
 const config = require('/path/to/file');
 ```
+
 
