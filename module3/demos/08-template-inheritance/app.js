@@ -23,6 +23,11 @@ app.get("/hello", function (request, response) {
   });
 });
 
+//contact-us route to show template inheritance
+app.get("/contact-us", function (request, response) {
+    response.render("contact-us");
+  });
+
 app.listen(3000, function () {
   console.log("server started");
 });
