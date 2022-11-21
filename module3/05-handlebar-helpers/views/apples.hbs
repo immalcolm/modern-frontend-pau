@@ -1,0 +1,15 @@
+{{#extends "base"}}
+{{#block "content"}}
+
+    {{#ifEquals favouriteFruit "apples"}}
+        i like apple
+    {{else}}
+        nooooo apple. 
+    {{/ifEquals}}
+
+    {{#checkForApple fruits}}
+    
+    {{/checkForApple}}
+{{/block}}
+
+{{/extends}}
