@@ -1,0 +1,33 @@
+{{#extends "base"}}
+  {{#block "content"}}
+    <!-- post method to identify as creating info -->
+    <form method="POST">
+      <label>Food Item:</label>
+      <input type="text" name="foodName" required />
+      <br />
+      <label>Description:</label>
+      <textarea name="description"></textarea>
+      <br />
+      <label>Crusine:</label>
+      <!-- select western as default -->
+      <input type="radio" name="cruisine" value="western" checked />Western
+      <input type="radio" name="cruisine" value="chinese" />Chinese
+      <input type="radio" name="cruisine" value="japanese" />Japanese
+      <br />
+      <label>Tags:</label>
+      <input type="checkbox" name="tags" value="cheap" />Cheap
+      <input type="checkbox" name="tags" value="delivery-free" />Free Delivery
+      <input type="checkbox" name="tags" value="healthy" />Healthy
+
+      <input type="submit" value="FOODIE!" />
+    </form>
+
+    {{#if error}}
+      {{errorMsg}}
+
+    {{else}}
+
+    {{/if}}
+
+  {{/block}}
+{{/extends}}
