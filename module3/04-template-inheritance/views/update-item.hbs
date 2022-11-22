@@ -1,0 +1,40 @@
+{{#extends "base"}}
+  {{#block "content"}}
+
+    <div class="container">
+      <h1>Update new food item</h1>
+      <form method="POST">
+        <div class="mb-3">
+          <label for="foodName" class="form-label">Food Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="foodName"
+            name="foodName"
+            placeholder="Enter your food name"
+            value="{{foodRecord.foodName}}"
+          />
+
+        </div>
+        <div class="mb-3">
+          <label for="foodCalories" class="form-label">Calories</label>
+          <input
+            type="text"
+            class="form-control"
+            id="foodCalories"
+            name="foodCalories"
+            value="{{foodRecord.foodCalories}}"
+          />
+        </div>
+        <!--
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
+        -->
+        <!--<input type="submit" value="Submit" class="btn btn-primary">-->
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  {{/block}}
+{{/extends}}
