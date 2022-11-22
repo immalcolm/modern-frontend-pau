@@ -1,0 +1,19 @@
+{
+  "name": "06b-price-of-goods",
+  "version": "1.0.0",
+  "description": "Consider the checkboxes below: ```html <input type=\"checkbox\" name=\"items\" value=\"durian\"/><label>Durian<label> <input type=\"checkbox\" name=\"items\" value=\"apple\"/><label>Apple<label> <input type=\"checkbox\" name=\"items\" value=\"orange\"/><label>Orange<label> <input type=\"checkbox\" name=\"items\" value=\"banana\"/><label>Banana<label> ```",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "hbs": "^4.2.0",
+    "wax-on": "^1.2.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
