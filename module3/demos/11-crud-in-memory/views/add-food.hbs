@@ -1,0 +1,70 @@
+{{#extends "base"}}
+  {{#block "content"}}
+    <div class="container">
+      <h1>Add Food Item</h1>
+      <form method="POST">
+        <label class="form-label">Food Name:</label>
+        <input type="text" class="form-control" name="foodName" />
+        <br />
+        <label class="form-label">Calories:</label>
+        <input type="text" class="form-control" name="calories" />
+        <br />
+        <label class="form-label">Meal</label>
+        <!-- select western as default -->
+        <input
+          type="radio"
+          class="form-check-input"
+          name="meal"
+          value="western"
+          checked
+        />
+        <label class="form-check-label">Western</label>
+
+        <input
+          type="radio"
+          class="form-check-input"
+          name="meal"
+          value="chinese"
+        />
+        <label class="form-check-label">Chinese</label>
+
+        <input
+          type="radio"
+          class="form-check-input"
+          name="meal"
+          value="japanese"
+        />
+        <label class="form-check-label">Japanese</label>
+        <br />
+        <label>Tags:</label>
+        <input
+          type="checkbox"
+          class="form-check-input"
+          name="tags"
+          value="cheap"
+        />Cheap
+        <input
+          type="checkbox"
+          class="form-check-input"
+          name="tags"
+          value="delivery-free"
+        />Free Delivery
+        <input
+          type="checkbox"
+          class="form-check-input"
+          name="tags"
+          value="healthy"
+        />Healthy
+        <input
+          type="checkbox"
+          class="form-check-input"
+          name="tags"
+          value="organic"
+        />Organic
+        <br />
+        <input type="submit" class="btn btn-primary" value="Add Food Item" />
+      </form>
+    </div>
+
+  {{/block}}
+{{/extends}}
