@@ -1,0 +1,16 @@
+<!-- inherit from views/layouts/base.hbs-->
+{{#extends "base"}} 
+    {{#block "content"}}
+        <!-- 2 inputs, height and weight -->
+        <!-- action="<url>" post info. will be sent there -->
+        <form method="POST">
+            <label>Height</label>
+            <input type="text" name="height" placeholder="Enter height" >
+            
+            <label>Weight</label>
+            <input type="text" name="weight" placeholder="Enter weight" >
+
+            <input type="submit" value="Calculate BMI">
+        </form>
+    {{/block}}
+{{/extends}}
