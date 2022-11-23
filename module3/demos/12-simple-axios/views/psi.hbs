@@ -1,0 +1,9 @@
+{{#extends "base"}}
+
+  {{#block "content"}}
+    {{#each readings.psi_twenty_four_hourly}}
+        {{@key}}: {{this}}
+        <!-- iterator number 0,1,... {{@index}} -->
+    {{/each}}
+  {{/block}}
+{{/extends}}
