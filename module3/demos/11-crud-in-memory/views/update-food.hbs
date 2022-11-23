@@ -1,16 +1,16 @@
 {{#extends "base"}}
   {{#block "content"}}
     <div class="container">
-      <h1>Add Food Item</h1>
+      <h1>Update Food Item</h1>
       <!-- by default send to itself, default route -->
       <!-- by default the action="add-food" -->
       <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attr-action-->
       <form method="POST">
         <label class="form-label">Food Name:</label>
-        <input type="text" class="form-control" name="foodName" />
+        <input type="text" class="form-control" name="foodName" value="{{foodRecord.foodName}}" />
         <br />
         <label class="form-label">Calories:</label>
-        <input type="text" class="form-control" name="calories" />
+        <input type="text" class="form-control" name="calories" value="{{foodRecord.calories}}"/>
         <br />
         <label class="form-label">Meal</label>
         <!-- select western as default -->
@@ -19,7 +19,7 @@
           class="form-check-input"
           name="meal"
           value="western"
-          checked
+          {{#eq foodRecord.meal "western"}}checked{{/eq}}
         />
         <label class="form-check-label">Western</label>
 
@@ -28,6 +28,8 @@
           class="form-check-input"
           name="meal"
           value="chinese"
+                    {{#eq foodRecord.meal "chinese"}}checked{{/eq}}
+
         />
         <label class="form-check-label">Chinese</label>
 
@@ -36,6 +38,7 @@
           class="form-check-input"
           name="meal"
           value="japanese"
+          {{#eq foodRecord.meal "japanese"}}checked{{/eq}}
         />
         <label class="form-check-label">Japanese</label>
         <br />
@@ -45,27 +48,33 @@
           class="form-check-input"
           name="tags"
           value="cheap"
+          {{#inArray foodRecord.tags "cheap"}}checked{{/inArray}}
         />Cheap
+        <!-- check whether delivery-free is in array foodRecord.tags -->
         <input
           type="checkbox"
           class="form-check-input"
           name="tags"
           value="delivery-free"
+          {{#inArray foodRecord.tags "delivery-free"}}checked{{/inArray}}
         />Free Delivery
         <input
           type="checkbox"
           class="form-check-input"
           name="tags"
           value="healthy"
+          {{#inArray foodRecord.tags "healthy"}}checked{{/inArray}}
         />Healthy
         <input
           type="checkbox"
           class="form-check-input"
           name="tags"
           value="organic"
+          {{#inArray foodRecord.tags "organic"}}checked{{/inArray}}
+
         />Organic
         <br />
-        <input type="submit" class="btn btn-primary" value="Add Food Item" />
+        <input type="submit" class="btn btn-primary" value="Update Food Item" />
       </form>
     </div>
 
