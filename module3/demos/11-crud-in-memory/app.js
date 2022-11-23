@@ -191,6 +191,44 @@ app.post("/update-food/:food_record_id", function(req, res){
     res.redirect('/all-food');
 })
 
+//D: Delete routing 
+//have a simple option to show a Yes/No UI 
+//delete-food/1001
+//have a parameter that is the item id 
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
+
+app.get("/delete-food/:delete_record_id", function(req, res){
+    let foodRecord = foodRecords.find(function(record){
+        if(record.id == req.params.delete_record_id){
+            return true;
+        }else{
+            return false;
+        }
+    });
+    res.render("delete-food",{
+        foodRecord: foodRecord
+    });
+});
+
+//Use findIndex() to return the index of the first element found
+//if no elements satisfy the condition , -1 is returned
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
+app.post("/delete-food/:delete_record_id", function(req, res){
+    let indexToDelete = foodRecords.findIndex(function(record){
+        if(record.id == req.params.delete_record_id){
+            return true;
+        }else{
+            return false;
+        }
+    });
+    //splice(start, deleteCount)
+    foodRecords.splice(indexToDelete, 1);
+    res.redirect("/all-food");
+
+});
+
+
 //ROUTING
 app.get("/", function (req, res) {
   res.send("hey there");
