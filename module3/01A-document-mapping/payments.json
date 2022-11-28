@@ -1,0 +1,19 @@
+[
+    {
+        "_id": 843894,
+        "student": {
+            "student_id": 1001,
+            "name": "Vito"
+        },
+        "parent": {
+            "parent_id": 4883,
+            "name": "Pat"
+        },
+        "session": {
+            "_id": 839239,
+            "date": "2022-11-28",
+            "time": "1600",
+            "location": "Yishun Swimming Complex"
+        }
+    }
+]

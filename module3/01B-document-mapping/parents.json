@@ -1,0 +1,16 @@
+[
+    {
+        "_id": 49384,
+        "name": "Kai",
+        "address": {
+            "street_name": "Nassim Road 1",
+            "block_number": 17,
+            "postal_code": 577888
+        },
+        "available_payment_types": [
+            "master", "paynow"
+        ],
+        "contact_no": 8493488,
+        "occupation": "Full Stack Developer"
+    }
+]

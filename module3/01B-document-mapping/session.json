@@ -1,0 +1,12 @@
+[
+    {
+        "_id": 4892,
+        "location": "Yishun Swimming Complex",
+        "datetime": "2022-11-28 4:00:00 PM",
+        "students": [
+            1001,
+            1002,
+            1003
+        ]
+    }
+]
