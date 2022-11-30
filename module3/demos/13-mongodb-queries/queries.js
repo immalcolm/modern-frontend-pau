@@ -92,3 +92,17 @@ db.listingsAndReviews.find({
 },{
     "name": 1
 })
+
+//listingsAndReviews.reviews[{},{}]
+//find based on the object inside an array
+//review.$ -> show the one that was matched 
+db.listingsAndReviews.find({
+  'reviews':{
+    '$elemMatch':{
+      'reviewer_name': 'Cátia'
+    }
+  }
+},{
+  'name':1,
+  'reviews.$': 1
+})
