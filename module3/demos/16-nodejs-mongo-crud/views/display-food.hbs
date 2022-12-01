@@ -1,7 +1,7 @@
 {{#extends "base"}}
     {{#block "content"}}
     <h1>Food Record</h1>
-    <a href="add-food" class="btn btn-primary">Add new food item</a>
+    <a href="/add-food" class="btn btn-primary">Add new food item</a>
 
     <table class="table">
         <thead>
@@ -23,8 +23,8 @@
                         {{/each}}
                     </td>
                     <td>
-                        <a href="#" class="btn btn-primary btn-sm">Edit</a>
-                        <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                        <a href="./update-food/{{this._id}}" class="btn btn-primary btn-sm">Edit</a>
+                        <a href="./delete-food/{{this._id}}" class="btn btn-danger btn-sm">Delete</a>
                         <a href="#" class="btn btn-secondary btn-sm">Details</a>
                     </td>
                 </tr>

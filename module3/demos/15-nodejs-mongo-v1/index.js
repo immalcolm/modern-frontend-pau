@@ -31,7 +31,7 @@ async function main(){
 
     //select which database we want connect
     let dbAirBnb = "sample_airbnb";
-    let db = client.db(dbAirBnb);
+    let db = client.db(dbAirBnb); //client.db(db) == use db
 
     //test collection call 
     //convert data to an array
