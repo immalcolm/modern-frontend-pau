@@ -164,6 +164,143 @@ async function main() {
 
     res.redirect("/display-food");
   });
+
+
+  //Subdocuments in mongodb
+  //---------------------
+  //create for sub-document (GET)
+  app.get("/food/:food_id/add-note", async function(req, res){
+    let db = MongoUtil.getDB();
+
+    //if using .find()--> need to convert data toArray()
+    let foodRecord = await db.collection("food_records").findOne({
+      _id: ObjectId(req.params.food_id)
+    });
+
+    res.render("add-note", {
+      foodRecord: foodRecord
+    });
+
+  });
+
+  //Create for sub-document (POST)
+  //1.test form works
+  //2. submit form
+  //3. check db whether new data is updated
+  //4. check display on view 
+  app.post("/food/:food_id/add-note", async function(req, res){
+    let db = MongoUtil.getDB();
+
+    //temp note object
+    //ObjectId() -> tell mongodb to generate a unique key
+    let newNote = {
+      _id: ObjectId(),
+      content: req.body.content
+    }
+    //console.log(req.body.content)
+
+    db.collection("food_records").updateOne({
+      _id: ObjectId(req.params.food_id)
+    },
+    //a push . even if an array doesn't exist, it will be created
+    {
+      $push: {
+        notes: newNote
+      }
+    }
+    )
+
+    res.redirect(`/food/${req.params.food_id}`);
+
+  });
+
+  //view food details along with notes
+  app.get("/food/:food_id", async function(req, res){
+    let db = MongoUtil.getDB();
+
+    //remember to use ObjectId function
+    //use findone it returns only 1 result
+    //findOne is an async call
+    let foodRecord = await db.collection("food_records").findOne({
+      _id: ObjectId(req.params.food_id)
+    })
+
+    res.render("food-details", {
+      foodRecord: foodRecord
+    })
+  });
+
+  //update sub doc - update (GET)
+  app.get("/food/:food_id/update-note/:note_id", async function(req,res){
+    //mongodb
+    let db = MongoUtil.getDB();
+
+    let noteId = req.params.note_id;
+
+    //id matches the note id
+    //project only what we want to display
+    //make sure you key in the correct collection name 
+    let foodRecord = await db.collection("food_records").findOne({
+      _id: ObjectId(req.params.food_id)
+    },{
+      projection: {
+        foodRecordName: 1,
+        notes: {
+          $elemMatch: {
+            _id:  ObjectId(noteId)
+          }
+        }
+      }
+    })
+    
+    res.render("update-note",{
+      foodRecord: foodRecord
+    })
+
+  });//end update note (GET)
+
+
+  //update sub-doc update doc(POST)
+  //if using as RESTFUL API use (PUT)
+  app.post("/food/:food_id/update-note/:note_id", async function (req, res){
+    let db = MongoUtil.getDB();
+
+    //
+    let noteId = req.params.note_id;
+
+    //when updating we use $set to update at that particular field
+    //sub.doc finding we use notes._id -> take note the dot notation
+    await db.collection("food_records").updateOne({
+      _id: ObjectId(req.params.food_id),
+      "notes._id": ObjectId(noteId),
+    },{
+      $set: {
+        "notes.$.content": req.body.content
+      }
+    })
+    res.redirect(`/food/${req.params.food_id}`);
+  });
+
+  //Delete sub document - delete
+  //using the link directly -> click -> delete
+  app.get("/food/:food_id/delete-note/:note_id", async function(req, res){
+    let db = MongoUtil.getDB();
+    let noteId = req.params.note_id;
+
+    //we use update using $pull instead of removing the sub doc
+    await db.collection("food_records").updateOne({
+      _id: ObjectId(req.params.food_id)
+    },{
+      $pull: {
+          "notes":{
+            "_id": ObjectId(noteId)
+          }
+      }
+    })
+
+    res.redirect(`/food/${req.params.food_id}`);
+  })
+
 }
 
 main();

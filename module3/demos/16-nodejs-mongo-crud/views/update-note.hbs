@@ -1,0 +1,22 @@
+{{#extends "base"}}
+  {{#block "content"}}
+    <h1>Update Note for {{foodRecord.foodRecordName}}</h1>
+    <form method="POST">
+      <label>Note:</label>
+      <textarea name="content" class="form-bootstrap">
+        {{foodRecord.notes.0.content}}
+      </textarea>
+      <input type="submit" value="Update Note" class="btn btn-primary">
+    </form>
+  {{/block}}
+
+{{/extends}}
+
+<!--
+{"_id":{"$oid":"638851868dd1fb24eba9c190"},"foodRecordName":"Mee
+Siam","calories":"300","tags":["vegan"],"notes":[{"_id":{"$oid":"6388723089a4f24f8e81a12a"},"content":"mee
+siam is nice"},{"_id":{"$oid":"6388741aa02baa814e756031"},"content":"mee siam
+needs hum"},{"_id":{"$oid":"63899760afe598d150ef1e5a"},"content":"mee siam is $3
+cheap!"}]}
+
+-->
