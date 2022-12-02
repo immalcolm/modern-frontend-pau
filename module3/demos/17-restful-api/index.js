@@ -6,6 +6,7 @@ require("dotenv").config();//process our .env file
 
 // ./ means relative path
 const MongoUtil = require("./MongoUtil");// path to MongoUtil.js 
+const { ObjectId } = require("mongodb");
 
 const MONGO_URI = process.env.MONGO_URI;
 
@@ -46,8 +47,8 @@ async function main(){
         //setup literal obj (temp)
         let foodSighting = {
             description: description,
-            food: food,
-            datetime: datetime
+            food: food, //""
+            datetime: datetime //""
         }
 
         //insert into database
@@ -60,6 +61,90 @@ async function main(){
         res.status(200);
         res.send(result);
     });
+
+    //perform simple search
+    app.get("/food-sightings", async function(req, res){
+        //start with an empty criteria, get all docs 
+        let criteria = {};
+        const db = MongoUtil.getDB();
+
+        //query strings are retrieved via req.query
+        console.log(req.query);
+
+        //if user specifies query content then we add them in 
+        //basic search 
+        if(req.query.description){
+            //adding the `description` key to criteria obj and assign req.query.description
+
+            criteria.description = req.query.description;
+
+            criteria.description = {
+                $regex: req.query.description, //use regex search
+                $options: "i" //ignore case (upper/lower case)
+            }
+        }
+
+        if(req.query.food){
+            //searching by food (array)
+            criteria.food = {
+                $in: [req.query.food],
+            }
+        }
+
+        const result = await db.collection("sightings").find(criteria).toArray();
+
+        res.status(200);
+        res.send(result);
+
+    })
+
+
+    //this route is to update a food sighting by its id
+    app.put("/food-sightings/:sighting_id", async function(req, res){
+        try{
+            let {description, food} = req.body;
+            let datetime = new Date(req.body.datetime) || new Date();
+
+            let modifiedDocument = {
+                description,
+                food,
+                datetime,
+            }
+
+            const result = await MongoUtil.getDB()
+                .collection("sightings")
+                .updateOne({
+                    _id: ObjectId(req.params.sighting_id)
+                },{
+                    $set: modifiedDocument
+                })
+
+            res.status(200);
+            res.json({
+                "message": "Update is successful"
+            })
+
+        }catch(error){
+            res.status(500);
+            res.send(error);
+            console.log(error);
+        }
+    });
+
+    //delete API
+    app.delete("/food-sightings/:sighting_id", async function(req, res){
+        try{
+            await MongoUtil.getDB()
+            .collection("sightings")
+            .deleteOne({
+                _id: ObjectId(req.params.sighting_id)
+            })
+            res.status(200);
+            res.send({"msg": "Data deleted successfully"});
+        }catch(error){
+            res.status(500);
+        }
+    })
 
 }
 
