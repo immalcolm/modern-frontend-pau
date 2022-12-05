@@ -19,8 +19,9 @@ import "./style.css"; //import and use our own css file
 function TwoBoxes(){
   return (
   <React.Fragment>
-    <div>Box 1</div>
+    <div>Box 1 {logo}</div>
     <div>Box 2</div>
+    <img src={logo}/>
   </React.Fragment>);
 }
 
@@ -45,6 +46,7 @@ function App() {
       <h2 style={{ backgroundColor: "green" }}>Heading {100 * 10}</h2>
       <p>{firstName == "John" ? "Welcome" : "Not Welcome!"}</p>
       <img src={require("./module4-schedule.png")} />
+      <img src={logo}/>
       <TwoBoxes/>
     </div>
   );
