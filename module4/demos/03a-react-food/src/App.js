@@ -3,8 +3,8 @@ import "./App.css";
 import React from "react";
 import "./style.css";
 import Nav from "./Nav";
-import Hero from "./Hero";
-import AboutUs from "./AboutUs";
+import Hero from "./components/Hero";
+import AboutUs from "./components/AboutUs";
 
 //using components in separate files 
 function App() {
