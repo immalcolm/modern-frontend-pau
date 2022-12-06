@@ -2,6 +2,8 @@ import BorderedImageFrame from "./BorderedImageFrame";
 import BorderedImageFrame2 from "./BorderedImageFrame2";
 import React from 'react';
 
+//example of 2 ways of using images
+//borderedimageframe2 taps on images in the public folder/
 function App() {
   return (
     <React.Fragment>
