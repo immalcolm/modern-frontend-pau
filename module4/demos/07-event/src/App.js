@@ -1,6 +1,6 @@
 import Btn from "./Btn";
 import Numberbox from "./Numberbox";
-
+import NumerboxCounter from "./NumerboxCounter";
 function App() {
   return (
     <div>
@@ -8,6 +8,9 @@ function App() {
 
       <br/>
       <Numberbox/>
+
+      <br/>
+      <NumerboxCounter/>
     </div>
   );
 }
