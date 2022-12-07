@@ -109,18 +109,22 @@ class RegisterFormAdvChk extends React.Component {
         interests: cloned,
       });
     } else {
+      /* //normal way to find index 
       let cloned = this.state.interests.slice();
       //find index to remove first
 
       let itemToRemove = cloned.findIndex(function (element) {
         //find the one that was unchecked(event.target.value)--> return the index
         return element === event.target.value;
-      });
+      });*/
+
+      //using indexof to find 
+      let itemToRemove = this.state.interests.indexOf(event.target.value);
 
       //copy to the part before the index to remove [a,b,c]
       //copy the last part after the index to remove [d,e,f]
       //[a,b,c, itemToRemove, d,e ,f ]
-      cloned = [...this.state.interests.slice(0,itemToRemove),...this.state.interests.slice(itemToRemove +1)]
+      let cloned = [...this.state.interests.slice(0,itemToRemove),...this.state.interests.slice(itemToRemove +1)]
       
       //reactive programming doesn't like you to modify it directly
       //this.state.interests -> no!!
