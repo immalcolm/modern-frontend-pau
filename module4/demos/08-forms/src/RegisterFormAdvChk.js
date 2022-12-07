@@ -119,6 +119,8 @@ class RegisterFormAdvChk extends React.Component {
       });*/
 
       //using indexof to find 
+      //["swimming","eating","eyepowering"] -> hence indexOf(target select value)
+      //-> returns the numerical index
       let itemToRemove = this.state.interests.indexOf(event.target.value);
 
       //copy to the part before the index to remove [a,b,c]
