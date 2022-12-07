@@ -53,6 +53,7 @@ export default class MallDirectory extends React.Component {
     ],
   };
 
+  //Method 1: using loops
   renderShops() {
     let jsx = [];
     //shop objects are complex
@@ -69,14 +70,18 @@ export default class MallDirectory extends React.Component {
     //filter and check based on search terms
     //tap on bootstrap card layout
     for (let shop of this.state.shops) {
-      if (shop.name.toUpperCase().includes(this.state.searchTerms.toUpperCase())) {
+      if (
+        shop.name.toUpperCase().includes(this.state.searchTerms.toUpperCase())
+      ) {
         jsx.push(
           <div className="card mb-4" key={shop.id}>
-            <h3>{shop.name}</h3>
-            <h3>
-              {shop.floor}-{shop.unit}
-            </h3>
-            <strong>Type: </strong> {shop.type}
+            <div className="card-body">
+              <h3 className="card-title">{shop.name}</h3>
+              <h3>
+                {shop.floor}-{shop.unit}
+              </h3>
+              <strong>Type: </strong> {shop.type}
+            </div>
           </div>
         );
       }
@@ -96,8 +101,34 @@ export default class MallDirectory extends React.Component {
             this.setState({
               searchTerms: event.target.value,
             });
-          }} className="form-control mb-4"
+          }}
+          className="form-control mb-4"
         />
+        <h3>Using Maps</h3>
+
+        {/* filter -> for each element if the condition satisfied -> give back to new arr */}
+        {/* the .map() method used here is to give the new array some jsx */}
+        <div className="row">
+          {this.state.shops
+            .filter((eachShop) =>
+              eachShop.name
+                .toUpperCase()
+                .includes(this.state.searchTerms.toUpperCase())
+            )
+            .map((eachShop) => (
+              <div className="card col-4 mb-4" key={eachShop.id}>
+                <div className="card-body">
+                  <h3 className="card-title">{eachShop.name}</h3>
+                  <h3>
+                    {eachShop.floor}-{eachShop.unit}
+                  </h3>
+                  <strong>Type: </strong> {eachShop.type}
+                </div>
+              </div>
+            ))}
+        </div>{/* end row  */}
+
+        <h3>Using Loops </h3>
         {this.renderShops()}
       </React.Fragment>
     );
