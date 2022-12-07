@@ -1,5 +1,5 @@
 //Registration Form
-
+//READ:: //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#computed_property_names
 import React from "react";
 
 //form needs state data, going to implement 2 way binding
