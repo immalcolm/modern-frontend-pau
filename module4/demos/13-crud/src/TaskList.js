@@ -32,6 +32,14 @@ import React from "react";
 //  . find index to replace
 //  . setState "tasks"  with latest modifiedTasks ..
 //  . setState "taskBeingEdit" to null or {}
+//19. create cancelEdit function 
+//  . reset the state of taskBeingEdited: {} 
+//  -> so that in our render it renders as per norm
+//20. create delete function and tag to the delete onClick={()=>{this.deleteTask}}
+//  . deleteTask = (task) => {}
+//  . inside find the index to delete using findIndex
+//  . then create a modifedArray that has only [...left , ...right] 
+//  . set the state of tasks with modifiedArray (basically replacing the tasks)
 
 export default class TaskList extends React.Component {
   //let's create some base data
