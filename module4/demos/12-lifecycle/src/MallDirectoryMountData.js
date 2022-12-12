@@ -86,47 +86,53 @@ export default class MallDirectoryMountData extends React.Component {
       <React.Fragment>
         <h1>Pandarium Mall Directory</h1>
         <h2>Shops</h2>
-        {this.state.isDataLoaded ? (
-          <React.Fragment>
-            <div className="row">
+        <div className="row">
+          {this.state.isDataLoaded ? (
+            <React.Fragment>
               {this.state.shops.map((eachShop) => {
                 return (
-                  <div className="card mb-4" key={eachShop.id}>
-                    <div className="card-body">
-                      <div className="card-title">
-                        <h3>{eachShop.name}</h3>
+                  <div className="col-3">
+                    <div
+                      className="card mb-4 shadow-sm"
+                      key={eachShop.id}
+                    >
+                      <img src={eachShop.img} class="card-img-top" alt="..." />
+                      <div className="card-body">
+                        <div className="card-title">
+                          <h3>{eachShop.name}</h3>
+                        </div>
+                        <ul>
+                          <li>
+                            Unit: {eachShop.floor}-{eachShop.unit}
+                          </li>
+                          <li>Type: {eachShop.type}</li>
+                        </ul>
                       </div>
-                      <ul>
-                        <li>
-                          Unit: {eachShop.floor}-{eachShop.unit}
-                        </li>
-                        <li>Type: {eachShop.type}</li>
-                      </ul>
                     </div>
                   </div>
                 );
               })}
-            </div>
-            <div className="row">
-              <h2>Events</h2>
-              {this.renderEvents()}
-            </div>
-          </React.Fragment>
-        ) : (
-          <React.Fragment>
-            <div className="card mb-4" key="1">
-              <div className="card-body">
-                <div className="card-title">
-                  <h3>Loading.....</h3>
-                </div>
-                <ul>
-                  <li>Unit: Loading.....</li>
-                  <li>Type: Loading.....</li>
-                </ul>
+              <div className="row">
+                <h2>Events</h2>
+                {this.renderEvents()}
               </div>
-            </div>
-          </React.Fragment>
-        )}
+            </React.Fragment>
+          ) : (
+            <React.Fragment>
+              <div className="card mb-4" key="1">
+                <div className="card-body">
+                  <div className="card-title">
+                    <h3>Loading.....</h3>
+                  </div>
+                  <ul>
+                    <li>Unit: Loading.....</li>
+                    <li>Type: Loading.....</li>
+                  </ul>
+                </div>
+              </div>
+            </React.Fragment>
+          )}
+        </div>
       </React.Fragment>
     );
   }

@@ -8,7 +8,7 @@ import MallDirectoryMountData from './MallDirectoryMountData';
 
 function App() {
   return (
-    <div className='container'>
+    <div className='container px-2'>
       <MallDirectoryMountData/>
     </div>
   );

@@ -5,28 +5,32 @@
             "name": "Macdonalds",
             "floor": 1,
             "unit": 202,
-            "type": "F&B"
+            "type": "F&B",
+            "img": "./images/mac.jpg"
         },
         {
             "id": 2,
             "name": "Coffee Beans",
             "floor": 2,
             "unit": 301,
-            "type": "F&B"
+            "type": "F&B",
+            "img": "./images/coffee-bean.jpg"
         },
         {
             "id": 3,
-            "name": "Uniqo",
+            "name": "Uniqlo",
             "floor": 1,
             "unit": 101,
-            "type": "Clothing"
+            "type": "Clothing",
+            "img": "./images/uniqlo.jpg"
         },
         {
             "id": 4,
             "name": "Don Don Donki",
             "floor": 5,
             "unit": 103,
-            "type": "Supermarket"
+            "type": "Supermarket",
+            "img": "./images/dondondoki.jpg"
         }
     ]
 }
