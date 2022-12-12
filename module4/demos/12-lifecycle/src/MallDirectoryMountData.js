@@ -16,7 +16,11 @@ import axios from "axios"; //load data with axios (.json files)
 //--> it will never be called again
 //5. update is called
 //6. unmounting will be called (may happen)
+import Lottie from "react-lottie-player";
+// Alternatively:
+// import Lottie from 'react-lottie-player/dist/LottiePlayerLight'
 
+import lottieJson from "./my-lottie.json";
 export default class MallDirectoryMountData extends React.Component {
   //setup default keys first before we load
 
@@ -92,10 +96,7 @@ export default class MallDirectoryMountData extends React.Component {
               {this.state.shops.map((eachShop) => {
                 return (
                   <div className="col-3">
-                    <div
-                      className="card mb-4 shadow-sm"
-                      key={eachShop.id}
-                    >
+                    <div className="card mb-4 shadow-sm" key={eachShop.id}>
                       <img src={eachShop.img} class="card-img-top" alt="..." />
                       <div className="card-body">
                         <div className="card-title">
@@ -130,6 +131,24 @@ export default class MallDirectoryMountData extends React.Component {
                   </ul>
                 </div>
               </div>
+              <Lottie
+                loop
+                animationData={lottieJson}
+                play
+                style={{ width: 150, height: 150 }}
+              />
+              <Lottie
+                loop
+                animationData={lottieJson}
+                play
+                style={{ width: 150, height: 150 }}
+              />
+              <Lottie
+                loop
+                animationData={lottieJson}
+                play
+                style={{ width: 150, height: 150 }}
+              />
             </React.Fragment>
           )}
         </div>
