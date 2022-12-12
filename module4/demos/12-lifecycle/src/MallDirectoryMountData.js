@@ -95,8 +95,8 @@ export default class MallDirectoryMountData extends React.Component {
             <React.Fragment>
               {this.state.shops.map((eachShop) => {
                 return (
-                  <div className="col-3">
-                    <div className="card mb-4 shadow-sm" key={eachShop.id}>
+                  <div className="col-3" key={eachShop.id}>
+                    <div className="card mb-4 shadow-sm">
                       <img src={eachShop.img} class="card-img-top" alt="..." />
                       <div className="card-body">
                         <div className="card-title">
@@ -120,6 +120,7 @@ export default class MallDirectoryMountData extends React.Component {
             </React.Fragment>
           ) : (
             <React.Fragment>
+              {/* 
               <div className="card mb-4" key="1">
                 <div className="card-body">
                   <div className="card-title">
@@ -131,24 +132,33 @@ export default class MallDirectoryMountData extends React.Component {
                   </ul>
                 </div>
               </div>
+          */}
+              <div className="row">
               <Lottie
-                loop
-                animationData={lottieJson}
-                play
-                style={{ width: 150, height: 150 }}
-              />
-              <Lottie
-                loop
-                animationData={lottieJson}
-                play
-                style={{ width: 150, height: 150 }}
-              />
-              <Lottie
-                loop
-                animationData={lottieJson}
-                play
-                style={{ width: 150, height: 150 }}
-              />
+                  loop
+                  animationData={lottieJson}
+                  play
+                  className="col-3"
+                />
+                <Lottie
+                  loop
+                  animationData={lottieJson}
+                  play
+                  className="col-3"
+                />
+                <Lottie
+                  loop
+                  animationData={lottieJson}
+                  play
+                  className="col-3"
+                />
+                <Lottie
+                  loop
+                  animationData={lottieJson}
+                  play
+                  className="col-3"
+                />
+              </div>
             </React.Fragment>
           )}
         </div>
