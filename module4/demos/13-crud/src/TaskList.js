@@ -26,11 +26,11 @@ import React from "react";
 //  . if match show input box/update/cancel
 //  . if doesnt match, show task/edit/delete
 //17. test! check 2 way bind for edit input box works
-//18. create processEditTask 
-//  . clone the selected task obj 
+//18. create processEditTask
+//  . clone the selected task obj
 //  . modify with latest task details
 //  . find index to replace
-//  . setState "tasks"  with latest modifiedTasks .. 
+//  . setState "tasks"  with latest modifiedTasks ..
 //  . setState "taskBeingEdit" to null or {}
 
 export default class TaskList extends React.Component {
@@ -161,10 +161,10 @@ export default class TaskList extends React.Component {
   //--> why we need to know. so that in our render, we can identify which obj
   //--> tell react to re-render
   //editedTaskName: store the current selected editing task description
-  beginEditTask = (task) => {
+  beginEditTask = (editedTask) => {
     this.setState({
-      taskBeingEdited: task,
-      editedTaskName: task.description,
+      taskBeingEdited: editedTask,
+      editedTaskName: editedTask.description,
     });
   };
 
@@ -190,8 +190,8 @@ export default class TaskList extends React.Component {
     //{
     // id:1,
     // description: "some task",
+    // done: false,
     // description: this.state.editedTaskName, --> supercedes the original
-    // done: false
     //}
     //having >> description: this.state.editedTaskName overwrites any key/value pair, superceding the original
 
@@ -200,6 +200,11 @@ export default class TaskList extends React.Component {
       else return false;
     });
     //combine everything back
+    //    0         1       2        3      4
+    //["banana","appple","orange","kiwi", "durian"]
+    //select orange -> orange -> return index 2
+    //slice(0,2)-> take from 0 till the one before it ends "orange"
+    //slice(3 and take whatever thats left)-> 3 and 4
     const modifiedTasks = [
       ...this.state.tasks.slice(0, indexToReplace),
       clonedTask,
@@ -207,9 +212,35 @@ export default class TaskList extends React.Component {
     ];
 
     this.setState({
-        tasks: modifiedTasks, //replace with latest tasks
-        taskBeingEdited: null //tell render there's no more task being edited
-    })
+      tasks: modifiedTasks, //replace with latest tasks
+      taskBeingEdited: null, //tell render there's no more task being edited
+    });
+  };
+
+  //we make use of the state values to hold the current state
+  //so when we cancel-> we set the taskBeingEdited to null
+  cancelEdit = () => {
+    this.setState({
+      taskBeingEdited: null,
+    });
+  };
+
+  //task is derived from the closure 
+  deleteTask = (task) => {
+    const indexToDelete = this.state.tasks.findIndex((eachTask) => {
+      if (eachTask.id === task.id) return true;
+      else return false;
+    });
+
+    //combine them and set state
+    const modifiedTasks = [
+      ...this.state.tasks.slice(0, indexToDelete),
+      ...this.state.tasks.slice(indexToDelete + 1),
+    ];
+
+    this.setState({
+      tasks: modifiedTasks,
+    });
   };
 
   render() {
@@ -245,7 +276,7 @@ export default class TaskList extends React.Component {
                     onChange={this.updateFormField}
                   />
                   <button onClick={this.processEditTask}>Update</button>
-                  <button>Cancel</button>
+                  <button onClick={this.cancelEdit}>Cancel</button>
                 </li>
               );
             } else {
@@ -267,7 +298,13 @@ export default class TaskList extends React.Component {
                   >
                     Edit
                   </button>
-                  <button>Delete</button>
+                  <button
+                    onClick={() => {
+                      this.deleteTask(eachTask);
+                    }}
+                  >
+                    Delete
+                  </button>
                 </li>
               );
             }
