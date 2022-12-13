@@ -32,4 +32,14 @@
     ```javascript
     onClick={() => props.beginEdit(props.item)}
     ```
-17. But let's do addItem
+17. But let's do addItem. Create a `AddItem` function inside `/components`
+18. `AddItem`: Create some form UI and a `Create` button.
+19. `BobaTeaShop`: Create `addItem` function
+    1.  Creates a temp obj with random id `Math.floor(Math.random() * 10000 + 1) `
+    2.  Values are derived from the state
+    3.  New state values `newItemName` `newItemPrice` `newItemSugar`
+20. `BobaTeaShop`: Update state with `newItemName` `newItemPrice` `newItemSugar` and give them blank values
+21. `BobaTeaShop`: Add in `AddItem` component inside render.
+    1.  Give attributes and bind to the state values `newItemName` `newItemPrice` `newItemSugar` and function `addItem`
+22. `AddItem`: Bind onClick to prop `addItem` 
+23. Let's deal with edit by creating `EditItem` component 

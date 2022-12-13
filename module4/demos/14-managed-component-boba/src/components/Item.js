@@ -12,6 +12,8 @@ const Item = (props) => {
       <h3>Price: {props.item.price}</h3>
       <h4>Sugar Level: {props.item.sugar}</h4>
       <button onClick={() => props.beginEdit(props.item)}>Edit</button>
+      <button onClick={() => props.delete(props.index)}>Delete By Index</button>
+      <button onClick={() => props.deleteByItem(props.item)}>Delete By Item</button>
     </div>
   );
 };
