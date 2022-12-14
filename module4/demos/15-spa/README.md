@@ -28,5 +28,24 @@ This will work with an API that is created in Express -> linked to Mongodb
     1.  `<AllRecipe recipes={this.state.data}/>`: send data over as props
 14. Upgrade `AllRecipe` to have props recipes
     1.  Create a map to print out the recipes data and ingredients
-15. Create new component `RecipeItem` this just does JSX of 1 item
-16. Upgrade `AllRecipe` to use component `RecipeItem`
+15. Create new component `RecipeItem` in `/components` folder. This just does JSX of 1 item
+16. Upgrade `AllRecipe` to use component `RecipeItem`. (Splitting up the UI)
+    1.  Extract JSX of `map` and place inside `RecipeItem`
+    2.  Change JSX to using `props`
+    3.  Update `AllRecipe` to send props data over to `RecipeItem`
+    4.  Send `_id`,`title`,`ingredients` as props
+17. Dealing with the Create-CRUD. Modify `AddNew` to include a form
+    1.  Create 2 labels and textboxes
+    2.  Apply some bootstrap css
+18. Setup 1way and 2way binding with `AddNew`
+    1.  setup name,value,onChange on AddNew to use props
+    2. Create a function `updateFormFields` in `RecipeBook` to handle form changes and set the state
+    3. Send props data over in `RecipeBook` > `AddNew` 
+19. Create a new function `addNew`. 
+    1.  Create a temp obj 
+        1.  _id: `<random id>`
+        2.  title: `this.state.newRecipeTitle`
+        3.  ingredients: `this.state.newRecipeIngredients`
+    2. Set the state and update the items and current page
+       1. data: `<new recipes>`
+       2. page: `list` (Change the state of the current page back to list. Gives a "redirect")

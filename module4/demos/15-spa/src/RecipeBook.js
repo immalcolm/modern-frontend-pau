@@ -26,6 +26,8 @@ export default class RecipeBook extends React.Component {
         ingredients: ["noodles", "sambal", "seafood", "vegetables"],
       },
     ],
+    newRecipeTitle: "", //base holding state for Add New
+    newRecipeIngredients: ""
   };
 
   //function that remembers the visuals
@@ -35,20 +37,52 @@ export default class RecipeBook extends React.Component {
     if (this.state.page === "list") {
       return <AllRecipe recipes={this.state.data} />;
     } else if (this.state.page === "add") {
-      return <AddNew />;
+      return <AddNew 
+        update={this.updateFormField}
+        title={this.state.newRecipeTitle}
+        ingredients={this.state.newRecipeIngredients}
+        add={this.addNew}
+      />;
     }
   }
 
   //arrow function that handles the current page
   //updates the state of the current page itself
   //this will eventually affect the rendering of the content due to renderPage
-  //param: page 
+  //param: page
   //list: list all recipes
   //add: Add new recipe
   switchPage = (page) => {
     this.setState({
-        page: page
+      page: page,
+    });
+  };
+
+  //deal with form names and set the properties
+  updateFormField = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  addNew = () => {
+    console.log(`Add New Recipe`);
+    //base temp recipe
+    const newRecipe = {
+        _id: Math.round(Math.random()* 10000 + 1),
+        title: this.state.newRecipeTitle,
+        ingredients: this.state.newRecipeIngredients.split(",")//split based a comma and insert into an array
+    }
+
+    this.setState({
+        data: [...this.state.data, newRecipe],
+        page: "list",
+        newRecipeTitle: "",
+        newRecipeIngredients: "",
     })
+
+    console.log(`New Recipe Added: ${newRecipe._id}`);
+
   }
 
   render() {
@@ -74,14 +108,21 @@ export default class RecipeBook extends React.Component {
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="#" 
-                  onClick={()=>this.switchPage("list")}
+                  <a
+                    className="nav-link active"
+                    aria-current="page"
+                    href="#"
+                    onClick={() => this.switchPage("list")}
                   >
                     List Recipes
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#" onClick={()=>this.switchPage("add")}>
+                  <a
+                    className="nav-link"
+                    href="#"
+                    onClick={() => this.switchPage("add")}
+                  >
                     Add New
                   </a>
                 </li>
