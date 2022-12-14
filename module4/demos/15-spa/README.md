@@ -49,3 +49,12 @@ This will work with an API that is created in Express -> linked to Mongodb
     2. Set the state and update the items and current page
        1. data: `<new recipes>`
        2. page: `list` (Change the state of the current page back to list. Gives a "redirect")
+20. Upgrade to use API data. 
+    1.  Install axios `npm install axios`
+21. Create an express application
+    1.  Install express, cors, mongodb, dotenv 
+22. Creation of APIs
+23. update RecipeBook to use axios
+    1.  Set a `BASE_API_URL` to the API created
+    2.  Use the function `componentDidMount`
+        1.  Make an API call inside
